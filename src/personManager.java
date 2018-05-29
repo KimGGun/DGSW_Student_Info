@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class personManager {
     final int MAX_CNT = 100;
     PersonInfo[] personInfo = new PersonInfo[MAX_CNT];
+
     int cnt = 0;
     Scanner scanner = new Scanner(System.in);
 
@@ -17,30 +18,62 @@ public class personManager {
         return -1;
     }
 
+    private PersonInfo InputInfo(){
+        System.out.print("학번 : ");
+        int num = Integer.parseInt(scanner.next());
+        System.out.print("이름 : ");
+        String name = scanner.next();
+
+        PersonInfo temp = new PersonInfo(num, name);
+
+        return temp;
+    }
+
+    private PersonInfo SchoolInputInfo(){
+        System.out.print("학번 : ");
+        int num = Integer.parseInt(scanner.next());
+        System.out.print("이름 : ");
+        String name = scanner.next();
+        System.out.printf("전공 : ");
+        String major = scanner.next();
+        System.out.printf("학년 : ");
+        int year = Integer.parseInt(scanner.next());
+
+        PersonInfo temp = new SchoolPersonInfo(num, name, major, year);
+
+        return temp;
+    }
+
+    private PersonInfo CompanyInputInfo(){
+        System.out.print("학번 : ");
+        int num = Integer.parseInt(scanner.next());
+        System.out.print("이름 : ");
+        String name = scanner.next();
+        System.out.printf("회사 : ");
+        String company = scanner.next();
+
+        PersonInfo temp = new CompanyPersonInfo(num, name, company);
+
+        return temp;
+    }
+
     public void inputData(){
-       /*
-        for(int i = 0 ; i < MAX_CNT;  i++){
-            if(personInfo[i] == null){
-                Scanner scanner = new Scanner(System.in);
-                System.out.print("학번 : ");
-                int sNum = scanner.nextInt();
-                System.out.print("이름 : ");
-                String sName = scanner.next();
-                System.out.println();
+        System.out.println("1. 일반 / 2. 학교 / 3. 회사");
+        System.out.print("선택 >> ");
+        int command = scanner.nextInt();
 
-                personInfo[i] = new PersonInfo(sNum, sName);
-                System.out.println("데이터 입력 완료");
-                System.out.println(personInfo[i].sNum+" "+personInfo[i].sName);
-                break;
-            }
+        if(command == 1){
+            personInfo[cnt++] = InputInfo();
         }
-        */
 
-       System.out.print("학번 : ");
-       int num = Integer.parseInt(scanner.next());
-       System.out.print("이름 : ");
-       String name = scanner.next();
-       personInfo[cnt++] = new PersonInfo(num, name);
+        if(command == 2){
+            personInfo[cnt++] = SchoolInputInfo();
+        }
+
+        if(command == 3){
+            personInfo[cnt++] = CompanyInputInfo();
+        }
+
         return;
     }
 
