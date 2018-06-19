@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Menu {
+public class Menu implements command{
     public static Scanner input= new Scanner(System.in);
     public static personManager pm = new personManager();
 
@@ -12,18 +12,18 @@ public class Menu {
         System.out.println("4. 프로그램 종료");
         System.out.print("선택 >> ");
         int command = input.nextInt();
-        if (command == 1) {
+        if (command == m_one) {
             pm.inputData();
         }
-        else if(command == 2) {
+        else if(command == m_two) {
             pm.searchData();
         }
 
-        else if(command == 3) {
+        else if(command == m_three) {
             pm.deleteData();
         }
 
-        else if (command == 4) {
+        else if (command == m_four) {
             System.exit(0);
         }
     }

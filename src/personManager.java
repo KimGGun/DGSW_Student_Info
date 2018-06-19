@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class personManager {
+public class personManager implements command{
     final int MAX_CNT = 100;
     PersonInfo[] personInfo = new PersonInfo[MAX_CNT];
 
@@ -62,15 +62,15 @@ public class personManager {
         System.out.print("선택 >> ");
         int command = scanner.nextInt();
 
-        if(command == 1){
+        if(command == m_one){
             personInfo[cnt++] = InputInfo();
         }
 
-        if(command == 2){
+        if(command == m_two){
             personInfo[cnt++] = SchoolInputInfo();
         }
 
-        if(command == 3){
+        if(command == m_three){
             personInfo[cnt++] = CompanyInputInfo();
         }
 
